@@ -1,0 +1,30 @@
+#include "L2Cache.h"
+
+int main() {
+
+  uint32_t value1, value2, clock;
+
+  resetTime();
+  initCache();
+  value1 = -1;
+  value2 = 0;
+
+  write(19200, (uint8_t *)(&value1));
+
+  clock = getTime();
+  printf("Time: %d\n", clock);
+
+  read(700, (uint8_t *)(&value1));
+  clock = getTime();
+  printf("Time: %d\n", clock);
+
+  write(512, (uint8_t *)(&value1));
+  clock = getTime();
+  printf("Time: %d\n", clock);
+
+  read(512, (uint8_t *)(&value2));
+  clock = getTime();
+  printf("Time: %d\n", clock);
+
+  return 0;
+}
